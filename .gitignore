@@ -22,6 +22,12 @@ build/
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
 
+# Visual Studio 2015 cache/options directory
+.vs/
+
+# Visual Studio Publish profiles
+*.pubxml
+
 *_i.c
 *_p.c
 *.ilk

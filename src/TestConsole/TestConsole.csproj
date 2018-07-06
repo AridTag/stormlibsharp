@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TestConsole</RootNamespace>
     <AssemblyName>TestConsole</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -36,6 +36,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="StormLibSharp.NETStandard">
+      <HintPath>..\..\..\D2NetCore\src\lib\StormLibSharp.NETStandard.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,10 +55,6 @@
     <ProjectReference Include="..\CascLibSharp\CascLibSharp.csproj">
       <Project>{89258c6b-c13a-4fc8-b311-2179de1b8c7f}</Project>
       <Name>CascLibSharp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\StormLibSharp\StormLibSharp.csproj">
-      <Project>{d0139c61-6ba0-4f07-b1e8-551023cd2624}</Project>
-      <Name>StormLibSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

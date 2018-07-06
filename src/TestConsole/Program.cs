@@ -1,16 +1,14 @@
-﻿using CascLibSharp;
-using StormLibSharp;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System;
 using System.IO;
 using System.Linq;
-using System.Text;
+using StormLibSharp;
 
 namespace TestConsole
 {
     class Program
     {
+        const string D2Path = @"D:\Diablo II";
+
         const string WOW_DATA_DIRECTORY_X64 = @"C:\Program Files (x86)\World of Warcraft\Data";
         const string HEROES_DATA_DIRECTORY_X64 = @"C:\Program Files (x86)\Heroes of the Storm\HeroesData";
 
@@ -20,46 +18,56 @@ namespace TestConsole
             Console.WriteLine("Attach a native debugger now and press <enter> to continue.");
             Console.ReadLine();
 
-            try
+            using (MpqArchive archive = new MpqArchive(Path.Combine(D2Path, "d2data.mpq"), FileAccess.Read))
             {
-                using (CascStorageContext casc = new CascStorageContext(WOW_DATA_DIRECTORY_X64))
+                using (MpqFileStream file = archive.OpenFile("(listfile)"))
+                using (StreamReader sr = new StreamReader(file))
                 {
-                    Console.WriteLine("Successfully loaded CASC storage context.");
-                    Console.WriteLine("Game type is {0}, build {1}", casc.GameClient, casc.GameBuild);
-                    Console.WriteLine("{0} total file(s)", casc.FileCount);
-                    Console.WriteLine("Has listfile: {0}", casc.HasListfile);
-                    Console.ReadLine();
-
-                    using (var file = casc.OpenFile(@"Interface\GLUES\LOADINGSCREENS\LoadingScreen_HighMaulRaid.blp"))
-                    {
-                        File.WriteAllBytes("LoadingScreen_HighMaulRaid.blp", file.ReadAllBytes());
-                    }
-                    Console.WriteLine("Successfully extracted LoadingScreen_HighMaulRaid.blp");
-                    try
-                    {
-                        using (var file = casc.OpenFileByEncodingKey(Convert.FromBase64String("2Pfre+Ss0jYg7lo3ZRYRtA==")))
-                        {
-                            File.WriteAllBytes("BloodElfFemaleFaceLower16_02.blp", file.ReadAllBytes());
-                        }
-                        Console.WriteLine("Successfully extracted BloodElfFemaleFaceLower16_02.blp via encoding key");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex);
-                    }
-                    Console.ReadLine();
-
-                    foreach (var file in casc.SearchFiles("*", WOW_LISTFILE_PATH))
-                    {
-                        Console.WriteLine("{0}: {1} [{2}]", file.FileName, file.PlainFileName, Convert.ToBase64String(file.EncodingKey));
-                    }
-                    Console.ReadLine();
+                    var listFile = sr.ReadToEnd();
+                    Console.WriteLine(listFile);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
+
+            //try
+            //{
+            //    using (CascStorageContext casc = new CascStorageContext(WOW_DATA_DIRECTORY_X64))
+            //    {
+            //        Console.WriteLine("Successfully loaded CASC storage context.");
+            //        Console.WriteLine("Game type is {0}, build {1}", casc.GameClient, casc.GameBuild);
+            //        Console.WriteLine("{0} total file(s)", casc.FileCount);
+            //        Console.WriteLine("Has listfile: {0}", casc.HasListfile);
+            //        Console.ReadLine();
+
+            //        using (var file = casc.OpenFile(@"Interface\GLUES\LOADINGSCREENS\LoadingScreen_HighMaulRaid.blp"))
+            //        {
+            //            File.WriteAllBytes("LoadingScreen_HighMaulRaid.blp", file.ReadAllBytes());
+            //        }
+            //        Console.WriteLine("Successfully extracted LoadingScreen_HighMaulRaid.blp");
+            //        try
+            //        {
+            //            using (var file = casc.OpenFileByEncodingKey(Convert.FromBase64String("2Pfre+Ss0jYg7lo3ZRYRtA==")))
+            //            {
+            //                File.WriteAllBytes("BloodElfFemaleFaceLower16_02.blp", file.ReadAllBytes());
+            //            }
+            //            Console.WriteLine("Successfully extracted BloodElfFemaleFaceLower16_02.blp via encoding key");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            Console.WriteLine(ex);
+            //        }
+            //        Console.ReadLine();
+
+            //        foreach (var file in casc.SearchFiles("*", WOW_LISTFILE_PATH))
+            //        {
+            //            Console.WriteLine("{0}: {1} [{2}]", file.FileName, file.PlainFileName, Convert.ToBase64String(file.EncodingKey));
+            //        }
+            //        Console.ReadLine();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.ToString());
+            //}
 
             /*
             string listFile = null;

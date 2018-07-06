@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StormLib", "StormLib", "{4AE095C9-98B2-4DFC-923D-AE41CB960E5D}"
 	ProjectSection(SolutionItems) = preProject
@@ -27,8 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x64-dbg", "x64-dbg", "{BD23
 	ProjectSection(SolutionItems) = preProject
 		..\lib\x64\debug\StormLib.dll = ..\lib\x64\debug\StormLib.dll
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StormLibSharp", "StormLibSharp\StormLibSharp.csproj", "{D0139C61-6BA0-4F07-B1E8-551023CD2624}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestConsole", "TestConsole\TestConsole.csproj", "{5A5F9099-49A3-4DB0-8FE5-F88C46590DB3}"
 EndProject
@@ -59,16 +57,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "x86-rel", "x86-rel", "{6FA0
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CascLibSharp", "CascLibSharp\CascLibSharp.csproj", "{89258C6B-C13A-4FC8-B311-2179DE1B8C7F}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StormLibSharp", "StormLibSharp\StormLibSharp.csproj", "{71CD3735-EC61-4675-AC10-BE27BD84D0ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0139C61-6BA0-4F07-B1E8-551023CD2624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0139C61-6BA0-4F07-B1E8-551023CD2624}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0139C61-6BA0-4F07-B1E8-551023CD2624}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0139C61-6BA0-4F07-B1E8-551023CD2624}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5A5F9099-49A3-4DB0-8FE5-F88C46590DB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5A5F9099-49A3-4DB0-8FE5-F88C46590DB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A5F9099-49A3-4DB0-8FE5-F88C46590DB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -77,6 +73,10 @@ Global
 		{89258C6B-C13A-4FC8-B311-2179DE1B8C7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89258C6B-C13A-4FC8-B311-2179DE1B8C7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89258C6B-C13A-4FC8-B311-2179DE1B8C7F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71CD3735-EC61-4675-AC10-BE27BD84D0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71CD3735-EC61-4675-AC10-BE27BD84D0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71CD3735-EC61-4675-AC10-BE27BD84D0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71CD3735-EC61-4675-AC10-BE27BD84D0ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -90,5 +90,8 @@ Global
 		{D54B979C-4217-4BE5-82A9-1E1B63034DD2} = {DA21C952-512F-4CF9-A788-94E9B8208A94}
 		{B20CA97F-8AC7-4E5E-B5BF-D9653B850E15} = {DA21C952-512F-4CF9-A788-94E9B8208A94}
 		{6FA0FD27-31E0-4D71-B0A5-9D2BEE9A9C66} = {DA21C952-512F-4CF9-A788-94E9B8208A94}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5C73A3EE-2CB2-4075-88F6-4F2993805A27}
 	EndGlobalSection
 EndGlobal

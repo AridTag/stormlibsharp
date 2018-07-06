@@ -8,7 +8,7 @@ namespace StormLibSharp.Native
 {
     internal static class NativeMethods
     {
-        private const string STORMLIB = "stormlib.dll";
+        private const string STORMLIB = "stormlib";
 
         #region Functions for manipulation with StormLib global flags
         [DllImport(STORMLIB, CallingConvention = CallingConvention.Winapi, ExactSpelling = true, PreserveSig = true, SetLastError = true, ThrowOnUnmappableChar = false)]
