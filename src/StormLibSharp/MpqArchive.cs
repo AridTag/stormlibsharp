@@ -128,6 +128,11 @@ namespace StormLibSharp
             return isValid;
         }
 
+        public bool IsValid
+        {
+            get => VerifyHandle(false);
+        }
+
         public bool IsPatchedArchive
         {
             get
