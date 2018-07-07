@@ -119,10 +119,13 @@ namespace StormLibSharp
             }
         }
 
-        private void VerifyHandle()
+        private bool VerifyHandle(bool shouldThrow = true)
         {
-            if (_handle == null || _handle.IsInvalid)
+            bool isValid = _handle?.IsInvalid == false;
+            if (isValid && shouldThrow)
                 throw new ObjectDisposedException("MpqArchive");
+
+            return isValid;
         }
 
         public bool IsPatchedArchive
@@ -255,6 +258,25 @@ namespace StormLibSharp
             MpqFileStream fs = new MpqFileStream(fileHandle, _accessType, this);
             _openFiles.Add(fs);
             return fs;
+        }
+
+        public bool TryOpenFile(string fileName, out MpqFileStream fileStream)
+        {
+            fileStream = null;
+            if (!VerifyHandle(shouldThrow: false))
+                return false;
+
+            MpqFileSafeHandle fileHandle;
+            if (!NativeMethods.SFileOpenFileEx(_handle, fileName, 0, out fileHandle))
+                return false;
+
+            if (fileHandle?.IsInvalid != false)
+                return false;
+
+            MpqFileStream fs = new MpqFileStream(fileHandle, _accessType, this);
+            _openFiles.Add(fs);
+            fileStream = fs;
+            return true;
         }
 
         public void ExtractFile(string fileToExtract, string destinationPath)
